@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -7,12 +8,13 @@ import java.io.File;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 
 public class DemoQAHoweWorkTest extends TestBase {
 
      @Test
          void fillFormTest() {
-         open("https://demoqa.com/automation-practice-form");
+         open("/automation-practice-form");
          $("#firstName").setValue("Anna");
          $("#lastName").setValue("Grishina");
          $("#userEmail").setValue("aaa@aa.aa");
