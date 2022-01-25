@@ -12,7 +12,7 @@ public class DemoQAHoweWorkTest extends TestBase {
 
      @Test
          void fillFormTest() {
-         open("/automation-practice-form");
+         open("https://demoqa.com/automation-practice-form");
          $("#firstName").setValue("Anna");
          $("#lastName").setValue("Grishina");
          $("#userEmail").setValue("aaa@aa.aa");
