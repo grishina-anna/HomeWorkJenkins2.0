@@ -23,7 +23,7 @@ public class TestBase {
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", false);
         Configuration.browserCapabilities = capabilities;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud"; //для автотестов в хроме
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub"; //для автотестов в хроме
     }
 
     @AfterEach
