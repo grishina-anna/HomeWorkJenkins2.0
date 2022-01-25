@@ -26,8 +26,8 @@ public class DemoQAHoweWorkTest extends TestBase {
          $(byText("29")).click();
          $("#subjectsInput").setValue("Math").pressEnter();
          $("[for*='hobbies-checkbox-2']").click();
-      //   File file = new File("src/test/resources/1.png");
-       //  $("#uploadPicture").uploadFile(file);
+         File file = new File("src/test/resources/1.png");
+         $("#uploadPicture").uploadFile(file);
          $("#currentAddress").setValue("Krasnaya, 1-1-11");
          $("#state").scrollTo().click();
          $("#stateCity-wrapper").$(byText("NCR")).click();
