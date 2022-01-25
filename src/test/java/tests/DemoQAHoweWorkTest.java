@@ -46,9 +46,4 @@ public class DemoQAHoweWorkTest extends TestBase {
                  text("Krasnaya, 1-1-11"),
                  text("NCR Noida"));
      }
-
-    @AfterEach
-    void AfterEach() {
-        closeWebDriver();
-    }
 }
