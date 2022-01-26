@@ -37,14 +37,12 @@ public class TestBase {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-        Selenide.closeWebDriver();
 
     }
 
     @AfterAll
     static void AfterAll() {
-
-    }
+        Selenide.closeWebDriver(); }
 }
 
 
