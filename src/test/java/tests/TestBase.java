@@ -15,7 +15,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class TestBase {
 
     @BeforeAll
-        static void setUp() {
+    static void setUp() {
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
@@ -23,7 +23,7 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
 
-   //     Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
@@ -42,7 +42,8 @@ public class TestBase {
 
     @AfterAll
     static void AfterAll() {
-        Selenide.closeWebDriver(); }
+        Selenide.closeWebDriver();
+    }
 }
 
 
