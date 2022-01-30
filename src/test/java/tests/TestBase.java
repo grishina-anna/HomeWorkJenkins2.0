@@ -19,8 +19,8 @@ public class TestBase {
         String browser = System.getProperty("browser", "chrome");
         String version = System.getProperty("version", "91");
         String remoteUrl = System.getProperty("remoteUrl", "selenoid.autotests.cloud/wd/hub1");
-        String login = System.getProperty("login", "user11");
-        String pass = System.getProperty("pass", "12341");
+        String login = System.getProperty("login", "user1");
+        String pass = System.getProperty("pass", "1234");
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
