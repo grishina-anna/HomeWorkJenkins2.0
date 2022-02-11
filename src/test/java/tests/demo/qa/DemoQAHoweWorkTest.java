@@ -1,13 +1,11 @@
-package tests;
+package tests.demo.qa;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 
 public class DemoQAHoweWorkTest extends TestBase {
 
@@ -26,8 +24,8 @@ public class DemoQAHoweWorkTest extends TestBase {
          $(byText("29")).click();
          $("#subjectsInput").setValue("Math").pressEnter();
          $("[for*='hobbies-checkbox-2']").click();
-         File file = new File("src/test/resources/1.png");
-         $("#uploadPicture").uploadFile(file);
+      //   File file = new File("src/test/resources/1.png");
+       //  $("#uploadPicture").uploadFile(file);
          $("#currentAddress").setValue("Krasnaya, 1-1-11");
          $("#state").scrollTo().click();
          $("#stateCity-wrapper").$(byText("NCR")).click();
@@ -46,9 +44,4 @@ public class DemoQAHoweWorkTest extends TestBase {
                  text("Krasnaya, 1-1-11"),
                  text("NCR Noida"));
      }
-
-    @AfterEach
-    void AfterEach() {
-        closeWebDriver();
-    }
 }
