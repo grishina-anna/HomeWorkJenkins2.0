@@ -1,4 +1,4 @@
-package tests;
+package tests.demo.qa;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -20,7 +20,7 @@ public class TestBase {
         String version = System.getProperty("version", "91");
         String remoteUrl = System.getProperty("remoteUrl", "selenoid.autotests.cloud/wd/hub");
         String login = System.getProperty("login", "user1");
-        String pass = System.getProperty("pass", "1234");
+        String password = System.getProperty("password", "1234");
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
@@ -29,7 +29,7 @@ public class TestBase {
 
    //     Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
-        String url = "https://" + login + ":" + pass + "@" + remoteUrl;
+        String url = "https://" + login + ":" + password + "@" + remoteUrl;
 
         Configuration.remote = url;
 
