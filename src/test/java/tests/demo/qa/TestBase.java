@@ -15,33 +15,23 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
     @BeforeAll
-    public static void setUp() {
-        SelenideLogger.addListener("AllureSelenide",new AllureSelenide());
+    static void setUp() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-        CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
-
-        String browser = System.getProperty("browser");
-        String version = System.getProperty("version");
-        String login = config.login();
-        String password = config.password();
-        String url = System.getProperty("url");
-        String remoteUrl = "https://" + login + ":" + password + "@" + url;
-
-        Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.browser = browser;
-        Configuration.browserVersion = version;
-        Configuration.remote = remoteUrl;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
+
         Configuration.browserCapabilities = capabilities;
+        Configuration.browser = "chrome";
     }
 
     @AfterEach
     void addAttachments() {
-        Attach.screenshotAs(System.getProperty("browser")+" "+System.getProperty("version"));
+        Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
