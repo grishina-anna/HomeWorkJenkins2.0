@@ -42,7 +42,6 @@ public class DemoQAHoweWorkTest extends TestBase {
                  text("aaa@aa.aa"),
                  text("8912345678"),
                  text("29 July,1990"),
-                 text("Krasnaya, 1-1-11"),
-                 text("Raj Jaise"));
+                 text("Krasnaya, 1-1-11");
      }
 }
