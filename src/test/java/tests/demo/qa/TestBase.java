@@ -1,60 +1,46 @@
 package tests.demo.qa;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.logevents.SelenideLogger;
+import config.Credentials;
 import helpers.Attach;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterAll;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static java.lang.String.format;
+
 public class TestBase {
-
     @BeforeAll
+    @Step("Конфигурация параметров запуска тестов")
     static void setUp() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-        String browser = System.getProperty("browser", "chrome");
-        String version = System.getProperty("version", "91");
-        String remoteUrl = System.getProperty("remoteUrl", "selenoid.autotests.cloud/wd/hub");
-        String login = System.getProperty("login", "user1");
-        String password = System.getProperty("password", "1234");
+        String login = Credentials.config.login();
+        String password = Credentials.config.password();
+        String url = System.getProperty("url");
+        String remoteUrl = "https://" + login + ":" + password + "@" + url;
 
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.browser = browser;
-        Configuration.browserVersion = version;
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "91");
+        Configuration.browserSize = System.getProperty("browserSize", "1024x768");
+        Configuration.remote = remoteUrl;
+        //Configuration.remote = format("https://%s:%s@%s", login, password, remoteUrl);
+        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
-   //     Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-
-        String url = "https://" + login + ":" + password + "@" + remoteUrl;
-
-        Configuration.remote = url;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities = capabilities;
-
-        Attach.attachAsText("Browser: ", browser);
-        Attach.attachAsText("Version: ", version);
-        Attach.attachAsText("Remote Url: ", remoteUrl);
-    }
-
+        Configuration.browserCapabilities = capabilities;    }
     @AfterEach
     void addAttachments() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-
-    }
-
-    @AfterAll
-    static void AfterAll() {
-        Selenide.closeWebDriver();
+        closeWebDriver();
     }
 }
 
