@@ -49,19 +49,19 @@ tasks.withType(Test) {
 }
 
 
-task properties_tests(type: Test) {
+task properties_test(type: Test) {
     useJUnitPlatform{
         includeTags "properties"
     }
 }
 
-task simple_tests(type: Test) {
+task simple_test(type: Test) {
     useJUnitPlatform{
         includeTags "simple"
     }
 }
 
-task owner_tests(type: Test) {
+task owner_test(type: Test) {
     useJUnitPlatform{
         includeTags "owner"
     }

@@ -1,5 +1,6 @@
 package tests.demo.qa;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
@@ -10,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class DemoQAHoweWorkTest extends TestBase {
 
      @Test
-         void fillFormTest() {
+     public void FillFormTest() {
          open("/automation-practice-form");
          $("#firstName").setValue("Anna");
          $("#lastName").setValue("Grishina");
