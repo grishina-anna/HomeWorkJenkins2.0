@@ -43,6 +43,6 @@ public class DemoQAHoweWorkTest extends TestBase {
                  text("8912345678"),
                  text("29 July,1990"),
                  text("Krasnaya, 1-1-11"),
-                 text("NCR Noida"));
+                 text("Raj Jaise"));
      }
 }
